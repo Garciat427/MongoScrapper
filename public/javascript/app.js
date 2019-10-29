@@ -28,7 +28,7 @@ $.getJSON("/articles", function(data) {
     row.addClass("row");
     
     var col = $("<div>");
-    col.addClass("col s12 m6");
+    col.addClass("col s12 m12");
     
     var card = $("<div>");
     card.addClass("card blue-grey darken-1");
@@ -46,10 +46,9 @@ $.getJSON("/articles", function(data) {
     card.append(cardAction);
     col.append(card);
     row.append(col);
+    
     $("#articles").append(row);
 
-
-    //$("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "</p>");
   }
 });
 
