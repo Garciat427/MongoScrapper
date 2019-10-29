@@ -3,7 +3,53 @@ $.getJSON("/articles", function(data) {
   // For each one
   for (var i = 0; i < data.length; i++) {
     // Display the apropos information on the page
-    $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "</p>");
+    
+    //Title
+    var title = $("<span>");
+    title.addClass("card-title");
+    title.text(data[i].title);
+
+    //Link
+    var link = $("<a>");
+    link.attr("href", data[i].link)
+    link.text("Click Here");
+
+    var note = $("<a>");
+    note.addClass("btn-floating halfway-fab waves-effect waves-light red");
+    var icon =  $("<i>");
+    icon.addClass("material-icons");
+    icon.text("add");
+    note.append(icon);
+
+
+
+    //Creating Card
+    var row = $("<div>");
+    row.addClass("row");
+    
+    var col = $("<div>");
+    col.addClass("col s12 m6");
+    
+    var card = $("<div>");
+    card.addClass("card blue-grey darken-1");
+
+    var cardContent = $("<div>");
+    cardContent.addClass("card-content white-text");
+
+    var cardAction = $("<div>");
+    cardAction.addClass("card-action");
+
+    cardAction.append(link);
+    cardContent.append(title);
+    card.append(cardContent);
+    card.append(note);
+    card.append(cardAction);
+    col.append(card);
+    row.append(col);
+    $("#articles").append(row);
+
+
+    //$("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "</p>");
   }
 });
 
